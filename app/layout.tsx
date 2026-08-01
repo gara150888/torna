@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import { Cormorant, Karla, Geist_Mono } from "next/font/google";
+import { Cormorant, Karla, Geist_Mono, Geist } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider, ThemeToggle } from "./components";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const cormorant = Cormorant({
   variable: "--font-display",
@@ -35,7 +38,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${cormorant.variable} ${karla.variable} ${geistMono.variable} h-full antialiased`}
+      className={cn("h-full", "antialiased", cormorant.variable, karla.variable, geistMono.variable, "font-sans", geist.variable)}
     >
       <body className="min-h-full flex flex-col bg-background font-body text-text-primary">
         <ThemeProvider
